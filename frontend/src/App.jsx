@@ -23,7 +23,7 @@ import { setSocket } from './redux/socketSlice.js'
 import { setOnlineUsers } from './redux/chatSlice.js'
 import { setLikeNotification } from './redux/realTimeNSlice.js'
 import { logoutUser } from './redux/authSlice'
-import store from './redux/store'
+import {store} from './redux/store'
 import "./App.css"
 
 function App() {

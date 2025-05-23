@@ -46,7 +46,7 @@ const ChatPage = () => {
   return (
     <div className="flex flex-col md:flex-row h-screen w-full overflow-hidden">
       {/* Sidebar - user list */}
-      <section className="md:w-64 w-full flex-shrink-0 overflow-y-auto bg-white shadow-md border-b md:border-b-0 md:border-r h-[120px] md:h-full py-2 px-4">
+      <section className="md:w-64 w-full flex-shrink-0 overflow-y-auto bg-white shadow-md border-b md:border-b-0 md:border-r h-[20vh] md:h-full py-2 px-4">
         <div className="hidden md:flex flex-col items-center pb-5 border-b mb-5">
           <Avatar className="h-14 w-14 rounded-full">
             <AvatarImage src={user?.profilePicture || ''} className="rounded-full object-cover" />
@@ -85,7 +85,7 @@ const ChatPage = () => {
       </section>
 
       {/* Chat section */}
-      <section className="flex flex-col bg-white shadow-md w-full h-full">
+      <section className="flex flex-col bg-white shadow-md w-full md:h-full h-[80vh]">
         <div className="w-full h-full flex flex-col">
           {selectedUser ? (
             <>
