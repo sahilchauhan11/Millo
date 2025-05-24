@@ -8,8 +8,9 @@ import postRoutes from './routes/post.routes.js';
 import messageRoutes from './routes/message.routes.js'; 
 import { server,app } from './socket/socketIo.js'
 
+
 dotenv.config();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT ;
 
 
 app.use(express.json());
@@ -19,7 +20,7 @@ app.use(cookieParser());
 
 const corsOptions = {
     origin: function (origin, callback) {
-        const allowedOrigins = [process.env.URL, 'http://localhost:5173'];
+        const allowedOrigins = [process.env.URL];
         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
