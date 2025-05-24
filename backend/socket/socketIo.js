@@ -10,7 +10,14 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: process.env.URL || 'http://localhost:5173', // fallback during development
+    origin: function (origin, callback) {
+      const allowedOrigins = [process.env.URL, 'http://localhost:5173'];
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     methods: ["GET", "POST"],
     credentials: true,
   },

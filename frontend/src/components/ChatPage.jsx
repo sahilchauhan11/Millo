@@ -46,7 +46,8 @@ const ChatPage = () => {
   return (
     <div className="flex flex-col md:flex-row h-screen w-full overflow-hidden">
       {/* Sidebar - user list */}
-      <section className="md:w-64 w-full flex-shrink-0 overflow-y-auto bg-white shadow-md border-b md:border-b-0 md:border-r h-[20vh] md:h-full py-2 px-4">
+      <section className="md:w-[30%]  w-full flex-shrink-0 overflow-y-auto bg-white shadow-md border-b md:border-b-0 md:border-r h-[20vh] md:h-full py-2 px-2 scrollbar-hide 
+      md:px-0">
         <div className="hidden md:flex flex-col items-center pb-5 border-b mb-5">
           <Avatar className="h-14 w-14 rounded-full">
             <AvatarImage src={user?.profilePicture || ''} className="rounded-full object-cover" />
@@ -54,24 +55,24 @@ const ChatPage = () => {
               {user?.username?.charAt(0)}
             </AvatarFallback>
           </Avatar>
-          <h2 className="mt-3 text-lg font-semibold text-center">{user?.username}</h2>
+          <h2 className="mt-3 text-sm md:text-base font-semibold text-center">{user?.username}</h2>
         </div>
 
-        <div className="flex md:flex-col relative left-10 gap-4 md:space-y-2 md:overflow-y-auto scrollbar-hide">
+        <div className="flex md:flex-col md:items-center relative  gap-4 md:space-y-2 md:overflow-y-auto scrollbar-hide">
           {suggestedUsers?.map((sugguser) => {
             const isOnline = onlineUsers?.includes(sugguser?._id);
             return (
               <div
                 key={sugguser._id}
                 onClick={() => dispatch(setSelectedUser(sugguser))}
-                className="flex md:flex-row flex-col items-center md:items-start gap-2 bg-[#c8b6ff] p-3 hover:bg-gray-200 rounded-lg cursor-pointer transition-all w-[100px] md:w-full"
+                className="flex md:flex-row flex-col items-center md:items-start gap-2 bg-[#c8b6ff] p-3 hover:bg-gray-200 rounded-lg cursor-pointer transition-all w-[100px] md:w-[80%]"
               >
                 <Avatar className="h-10 w-10 rounded-full">
                   <AvatarImage src={sugguser.profilePicture || ''} className="rounded-full object-cover" />
                   <AvatarFallback className="bg-gray-300">{sugguser.username.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div className="flex flex-col w-full items-center md:items-start">
-                  <h1 className="text-xs md:text-base font-semibold">{sugguser.username}</h1>
+                  <h1 className="text-xs lg:text-sm font-semibold">{sugguser.username}</h1>
                   <span
                     className={`text-[9px] md:text-xs font-semibold ${isOnline ? 'text-green-500' : 'text-red-500'}`}
                   >
@@ -85,7 +86,7 @@ const ChatPage = () => {
       </section>
 
       {/* Chat section */}
-      <section className="flex flex-col bg-white shadow-md w-full md:h-full h-[80vh]">
+      <section className="flex flex-col bg-white shadow-md w-full md:h-full h-[80vh] md:w-[70%] relative ">
         <div className="w-full h-full flex flex-col">
           {selectedUser ? (
             <>
@@ -104,7 +105,7 @@ const ChatPage = () => {
               </div>
 
               {/* Messages */}
-              <div className="flex-grow overflow-y-auto bg-gray-50 p-4 w-full">
+              <div className="flex-grow overflow-y-auto bg-gray-50 py-2 w-full md:w-full px-1">
                 <Messages selectedUser={selectedUser} />
               </div>
 

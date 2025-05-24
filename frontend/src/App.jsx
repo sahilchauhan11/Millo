@@ -49,10 +49,12 @@ function App() {
   // Setup socket.io connection
   useEffect(() => {
     if (user) {
-      const socketio = io('http://localhost:8000', {
-        query: { userId: user._id },
-        transports: ['websocket']
-      })
+     
+const socketio = io(import.meta.env.VITE_BACKEND_URI
+  , {
+  query: { userId: user._id },
+  transports: ['websocket']
+})
 
       dispatch(setSocket(socketio))
 
